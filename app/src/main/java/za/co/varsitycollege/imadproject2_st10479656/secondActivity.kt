@@ -1,6 +1,7 @@
 package za.co.varsitycollege.imadproject2_st10479656
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -27,6 +28,10 @@ class SecondActivity: AppCompatActivity() {
     private var currentQuestionIndex = 0
     private val totalQuestions = questions.size
 
+    private var score = 0
+    private val correctAnswerList = mutableListOf<String>()
+
+
     private lateinit var questionText: TextView
     private lateinit var questionCounter: TextView
     private lateinit var answerTextView: TextView
@@ -42,6 +47,7 @@ class SecondActivity: AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         supportActionBar?.title = "Second Page"
+
 
         // initialize views properly
         questionText = findViewById<TextView>(R.id.questionText)
@@ -71,6 +77,12 @@ class SecondActivity: AppCompatActivity() {
                 displayQuestion(currentQuestionIndex)
             } else {
                 Toast.makeText(this, "Quiz Finished!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra("score",score)
+                intent.putExtra("Total",totalQuestions)
+                intent.putStringArrayListExtra("CORRECT_ANSWERS",ArrayList(correctAnswerList)) // All Answers list
+                startActivity(intent)
+                finish() //closes quiz screen
             }
         }
     }
@@ -87,6 +99,8 @@ class SecondActivity: AppCompatActivity() {
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = questions[currentQuestionIndex].answer
         if (userAnswer == correctAnswer) {
+            score++ // this counts all the answers
+            correctAnswerList.add(questions[currentQuestionIndex].text) // add this
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
             answerTextView.text = "Correct!"
         } else {

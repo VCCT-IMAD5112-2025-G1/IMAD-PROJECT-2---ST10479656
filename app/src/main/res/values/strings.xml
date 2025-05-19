@@ -1,20 +1,20 @@
 <resources>
-        <string name="app_name" translatable="false">IMAD PROJECT 2 - ST10479656</string>
+    <string name="app_name" translatable="false">IMAD PROJECT 2 - ST10479656</string>
 
-        <!-- Fixed this line -->
-        <string name="questions_screen" translatable="false">Questions Screen</string>
+    <!-- Fixed this line -->
+    <string name="questions_screen" translatable="false">Questions Screen</string>
 
-        <string name="go_to_next_page" translatable="false">Go to Next Page</string>
+    <string name="go_to_next_page" translatable="false">Go to Next Page</string>
 
-        <string name="welcome_message">Welcome to BrainBolt, a flash card study tool which helps you strengthen your knowledge across multiple subjects / topics. It offers quick customizable cards to keep your mind active and improve memory. Elevate your learning skills, one card at a time</string>
+    <string name="welcome_message">Welcome to BrainBolt, a flash card study tool which helps you strengthen your knowledge across multiple subjects / topics. It offers quick customizable cards to keep your mind active and improve memory. Elevate your learning skills, one card at a time</string>
 
-        <string name="brainbolt" translatable="false">BrainBolt</string>
-        <string name="next_page" translatable="false">Next Page</string>
-        <string name="next_button">Next</string>
-        <string name="answer">Answer</string>
-        <string name="false_button">False</string>
-        <string name="true_button">True</string>
-        <string name="questionCounter">Questions</string>
+    <string name="brainbolt" translatable="false">BrainBolt</string>
+    <string name="next_page" translatable="false">Next Page</string>
+    <string name="next_button">Next</string>
+    <string name="answer">Answer</string>
+    <string name="false_button">False</string>
+    <string name="true_button">True</string>
+    <string name="questionCounter">Questions</string>
 
-    </resources>
+</resources>
 
