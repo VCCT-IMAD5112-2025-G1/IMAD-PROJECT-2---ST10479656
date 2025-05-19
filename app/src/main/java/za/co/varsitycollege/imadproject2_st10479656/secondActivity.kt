@@ -18,7 +18,7 @@ class SecondActivity: AppCompatActivity() {
         Question("There are 20 hours in a day.", false),
         Question("Nelson Mandela was the first black president in South Africa.", true),
         Question("Varsity College is a private institution.", true),
-        Question("5 + 10 - 5 = 15.", true)
+        Question("5 + 10 + 5 = 15.", true)
     )
     private val allCorrectAnswers: List<String> = questions.filter { it.answer }.map { it.text }
     private val correctAnswersList = mutableListOf<String>()
