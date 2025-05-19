@@ -1,0 +1,109 @@
+package za.co.varsitycollege.imadproject2_st10479656
+
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
+class SecondActivity: AppCompatActivity() {
+
+    //list of questions withe correct answer (true/false)
+    private val questions = listOf(
+        Question("The Earth is flat.", false),
+        Question("There are 20 hours in a day.", false),
+        Question("Nelson Mandela was the first black president in South Africa.",true),
+        Question("Varsity College is a private institution.", true),
+        Question("5 + 10 = 15.", true)
+    )
+    // Data class for a question
+    data class Question(val text: String, val answer: Boolean)
+
+
+    private var currentQuestionIndex = 0
+    private val totalQuestions = questions.size
+
+    private lateinit var questionText: TextView
+    private lateinit var questionCounter: TextView
+    private lateinit var answerTextView: TextView
+    private lateinit var trueButton: Button
+    private lateinit var falseButton: Button
+    private lateinit var nextButton: Button
+
+
+    @SuppressLint("MissingInflatedId")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // enableEdgeToEdge() // remove if not used
+        setContentView(R.layout.activity_second)
+
+        supportActionBar?.title = "Second Page"
+
+        // initialize views
+        findViewById<TextView>(R.id.questionText)
+        findViewById<TextView>(R.id.questionCounter)
+        findViewById<Button>(R.id.truebutton)
+        findViewById<Button>(R.id.falsebutton)
+        findViewById<Button>(R.id.nextbutton)
+        findViewById<TextView>(R.id.answerTextView)
+
+        // display the first question
+        displayQuestion(currentQuestionIndex)
+
+        //Answer button logic
+        trueButton.setOnClickListener {
+            checkAnswer(true)
+        }
+        falseButton.setOnClickListener {
+            checkAnswer(false)
+        }
+
+        // Next Question
+        nextButton.setOnClickListener {
+            if (currentQuestionIndex < totalQuestions - 1) {
+                currentQuestionIndex++
+                displayQuestion(currentQuestionIndex)
+            } else {
+                Toast.makeText(this, "Quiz Finished!", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun displayQuestion(index: Int) {
+        val currentQuestion = questions[index]
+        questionText.text = currentQuestion.text
+        questionCounter.text = "${index + 1} / $totalQuestions"
+        answerTextView.text = "" // clear previous answer result
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun checkAnswer(userAnswer: Boolean) {
+        val correctAnswer = questions[currentQuestionIndex].answer
+        if (userAnswer == correctAnswer) {
+         Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
+            answerTextView.text = "Correct"
+        } else {
+            Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show()
+            answerTextView.text = "Incorrect"
+        }
+
+
+
+
+
+
+
+
+
+
+            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+    }
+}

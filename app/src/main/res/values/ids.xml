@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <item name="main" type="id" />
+    <item name="questionText" type="id" />
+    <item name="questionCounter" type="id" />
+    <item name="answerTextView" type="id" />
+    <item name="truebutton" type="id" />
+    <item name="falsebutton" type="id" />
+    <item name="nextbutton" type="id" />
+
+</resources>
+
