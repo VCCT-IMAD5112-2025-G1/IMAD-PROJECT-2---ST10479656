@@ -17,7 +17,7 @@ class ResultActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_result)
 
-        val score = intent.getIntExtra("SCORE", 0 - 5)
+        val score = intent.getIntExtra("SCORE", 0 )
         val total = intent.getIntExtra("TOTAL", 5 )
         val correctAnswers = intent.getStringArrayListExtra("CORRECT_ANSWERS") ?: arrayListOf()
 
@@ -25,7 +25,9 @@ class ResultActivity : AppCompatActivity() {
         val feedbackTextView = findViewById<TextView>(R.id.feedbackTextView)
         val reviewButton = findViewById<Button>(R.id.reviewButton)
 
-        resultTextView.text = "You got $score out of 5 correct"
+
+
+        resultTextView.text = "You got $score out of $total correct"
 
         //Feedback based on performance
         val feedback = when {
