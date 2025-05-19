@@ -5,13 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("CutPasteId")
+    @SuppressLint("CutPasteId", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,8 +25,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.mainLayout)
         findViewById<TextView>(R.id.textView2)
 
-        val btn = findViewById<Button>(R.id.button1)
-        btn.setOnClickListener {
+        val nextPageButton = findViewById<Button>(R.id.nextPageButton)
+        nextPageButton.setOnClickListener {
+            Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }

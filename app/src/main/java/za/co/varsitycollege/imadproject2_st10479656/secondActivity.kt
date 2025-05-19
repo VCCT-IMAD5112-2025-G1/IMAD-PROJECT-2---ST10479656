@@ -15,10 +15,11 @@ class SecondActivity: AppCompatActivity() {
     private val questions = listOf(
         Question("The Earth is flat.", false),
         Question("There are 20 hours in a day.", false),
-        Question("Nelson Mandela was the first black president in South Africa.",true),
+        Question("Nelson Mandela was the first black president in South Africa.", true),
         Question("Varsity College is a private institution.", true),
         Question("5 + 10 = 15.", true)
     )
+
     // Data class for a question
     data class Question(val text: String, val answer: Boolean)
 
@@ -42,21 +43,23 @@ class SecondActivity: AppCompatActivity() {
 
         supportActionBar?.title = "Second Page"
 
-        // initialize views
-        findViewById<TextView>(R.id.questionText)
-        findViewById<TextView>(R.id.questionCounter)
-        findViewById<Button>(R.id.truebutton)
-        findViewById<Button>(R.id.falsebutton)
-        findViewById<Button>(R.id.nextbutton)
-        findViewById<TextView>(R.id.answerTextView)
+        // initialize views properly
+        questionText = findViewById<TextView>(R.id.questionText)
+        questionCounter = findViewById<TextView>(R.id.questionCounter)
+        answerTextView = findViewById<TextView>(R.id.answerTextView)
+        trueButton = findViewById<Button>(R.id.truebutton)
+        falseButton = findViewById<Button>(R.id.falsebutton)
+        nextButton = findViewById<Button>(R.id.nextbutton)
+
 
         // display the first question
         displayQuestion(currentQuestionIndex)
 
-        //Answer button logic
+        // Button logic
         trueButton.setOnClickListener {
             checkAnswer(true)
         }
+
         falseButton.setOnClickListener {
             checkAnswer(false)
         }
@@ -84,12 +87,13 @@ class SecondActivity: AppCompatActivity() {
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = questions[currentQuestionIndex].answer
         if (userAnswer == correctAnswer) {
-         Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
-            answerTextView.text = "Correct"
+            Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
+            answerTextView.text = "Correct!"
         } else {
             Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show()
-            answerTextView.text = "Incorrect"
+            answerTextView.text = "Incorrect!"
         }
+
 
 
 
