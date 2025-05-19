@@ -15,6 +15,11 @@
     <string name="false_button">False</string>
     <string name="true_button">True</string>
     <string name="questionCounter">Questions</string>
+    <string name="resultTextView">Score</string>
+    <string name="feedback">Feedback</string>
+    <string name="review_button">Review Correct Answers</string>
+    <string name="review_correct_answers">Review Correct Answers</string>
+    <string name="score">Score</string>
 
 </resources>
 

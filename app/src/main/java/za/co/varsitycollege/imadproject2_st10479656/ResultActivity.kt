@@ -18,7 +18,7 @@ class ResultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_result)
 
         val score = intent.getIntExtra("SCORE", 0 )
-        val total = intent.getIntExtra("TOTAL", 5 )
+        val total = intent.getIntExtra("TOTAL", 5 ) // default to 5
         val correctAnswers = intent.getStringArrayListExtra("CORRECT_ANSWERS") ?: arrayListOf()
 
         val resultTextView = findViewById<TextView>(R.id.resultTextView)
