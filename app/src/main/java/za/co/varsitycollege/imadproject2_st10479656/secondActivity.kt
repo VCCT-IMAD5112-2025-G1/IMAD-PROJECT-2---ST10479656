@@ -18,8 +18,10 @@ class SecondActivity: AppCompatActivity() {
         Question("There are 20 hours in a day.", false),
         Question("Nelson Mandela was the first black president in South Africa.", true),
         Question("Varsity College is a private institution.", true),
-        Question("5 + 10 = 15.", true)
+        Question("5 + 10 - 5 = 15.", true)
     )
+    private val allCorrectAnswers: List<String> = questions.filter { it.answer }.map { it.text }
+    private val correctAnswersList = mutableListOf<String>()
 
     // Data class for a question
     data class Question(val text: String, val answer: Boolean)
@@ -29,7 +31,6 @@ class SecondActivity: AppCompatActivity() {
     private val totalQuestions = questions.size
 
     private var score = 0
-    private val correctAnswerList = mutableListOf<String>()
 
 
     private lateinit var questionText: TextView
@@ -78,9 +79,9 @@ class SecondActivity: AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Quiz Finished!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ResultActivity::class.java)
-                intent.putExtra("score",score)
-                intent.putExtra("Total",totalQuestions)
-                intent.putStringArrayListExtra("CORRECT_ANSWERS",ArrayList(correctAnswerList)) // All Answers list
+                intent.putExtra("SCORE",score) // Send correct score
+                intent.putExtra("TOTAL",totalQuestions) //Should be 5
+                intent.putStringArrayListExtra("CORRECT_ANSWERS",ArrayList(allCorrectAnswers)) // All Answers list
                 startActivity(intent)
                 finish() //closes quiz screen
             }
@@ -99,8 +100,9 @@ class SecondActivity: AppCompatActivity() {
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = questions[currentQuestionIndex].answer
         if (userAnswer == correctAnswer) {
-            score++ // this counts all the answers
-            correctAnswerList.add(questions[currentQuestionIndex].text) // add this
+            score++ // Count all correct answers
+            Toast.makeText(this, "Score: $score", Toast.LENGTH_SHORT).show()
+            correctAnswersList.add(questions[currentQuestionIndex].text) // add this
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show()
             answerTextView.text = "Correct!"
         } else {
@@ -125,3 +127,6 @@ class SecondActivity: AppCompatActivity() {
         }
     }
 }
+
+
+

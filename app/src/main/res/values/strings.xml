@@ -9,7 +9,7 @@
     <string name="welcome_message">Welcome to BrainBolt, a flash card study tool which helps you strengthen your knowledge across multiple subjects / topics. It offers quick customizable cards to keep your mind active and improve memory. Elevate your learning skills, one card at a time</string>
 
     <string name="brainbolt" translatable="false">BrainBolt</string>
-    <string name="next_page" translatable="false">Next Page</string>
+    <string name="next_page">Start</string>
     <string name="next_button">Next</string>
     <string name="answer">Answer</string>
     <string name="false_button">False</string>
@@ -20,6 +20,7 @@
     <string name="review_button">Review Correct Answers</string>
     <string name="review_correct_answers">Review Correct Answers</string>
     <string name="score">Score</string>
+    <string name="start">Start</string>
 
 </resources>
 

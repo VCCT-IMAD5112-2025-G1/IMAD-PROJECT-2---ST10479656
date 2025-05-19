@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4CAF50"
+    android:backgroundTint="#4CAF50"
     tools:context=".ResultActivity">
 
 
@@ -39,6 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="212dp"
+        android:background="#4CAF50"
+        android:backgroundTint="#C5564F"
         android:text="@string/review_correct_answers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

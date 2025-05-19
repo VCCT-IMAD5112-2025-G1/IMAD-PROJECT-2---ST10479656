@@ -17,15 +17,14 @@ class ResultActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_result)
 
-        val score = intent.getIntExtra("SCORE", 0 )
+        val score = intent.getIntExtra("SCORE", 0 ) //change for all correct answers
         val total = intent.getIntExtra("TOTAL", 5 ) // default to 5
         val correctAnswers = intent.getStringArrayListExtra("CORRECT_ANSWERS") ?: arrayListOf()
+
 
         val resultTextView = findViewById<TextView>(R.id.resultTextView)
         val feedbackTextView = findViewById<TextView>(R.id.feedbackTextView)
         val reviewButton = findViewById<Button>(R.id.reviewButton)
-
-
 
         resultTextView.text = "You got $score out of $total correct"
 
@@ -38,14 +37,11 @@ class ResultActivity : AppCompatActivity() {
         feedbackTextView.text = feedback
 
         reviewButton.setOnClickListener {
-            val message = if (correctAnswers.isEmpty()) {
-                "No correct answer to review."
-            } else {
-                correctAnswers.joinToString("\n. ", prefix = ".")
-            }
+            val message = correctAnswers.joinToString("\n. ", prefix = ".")
+
 
             AlertDialog.Builder(this)
-                .setTitle("Correct Answers")
+                .setTitle("All Correct Answers")
                 .setMessage(message)
                 .setPositiveButton("OK", null)
                 .show()
